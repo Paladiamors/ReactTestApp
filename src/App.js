@@ -1,58 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import CounterApp from "./features/counter/CounterApp";
+import { Provider } from "react-redux";
+import store from "./app/store";
+import "./App.css";
 
-function App() {
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+function MainApp() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <React.StrictMode>
+      <Provider store={store}>
+        <Router>
+          <div>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            </ul>
+            <hr />
+
+            <Switch>
+              <Route exact path="/">
+                <CounterApp />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </Provider>
+    </React.StrictMode>
   );
 }
 
-export default App;
+function About() {
+  return <h2>About</h2>;
+}
+
+function Dashboard() {
+  return <h2>Dashboard</h2>;
+}
+export default MainApp;
