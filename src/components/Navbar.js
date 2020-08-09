@@ -73,6 +73,16 @@ export default function MainNavBar() {
                   Tables
                 </NavLink>
               </DropdownItem>
+              <DropdownItem>
+                <NavLink tag={Link} to="/csrfLogin">
+                  CsrfLogin
+                </NavLink>
+              </DropdownItem>
+              <DropdownItem>
+                <NavLink tag={Link} to="/csrfLoginOnSubmit">
+                  CsrfLoginOnSubmit
+                </NavLink>
+              </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
           <UncontrolledDropdown nav inNavbar>

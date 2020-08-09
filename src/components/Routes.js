@@ -11,6 +11,8 @@ import Repl from "../pages/Repl";
 import SignUp from "../pages/SignUp";
 import Tables from "../pages/Tables";
 import Person from "../features/person/Person";
+import CsrfLogin from "../pages/Csrf";
+import CsrfLoginOnSubmit from "../pages/CsrfOnSubmit";
 
 export default function () {
   return (
@@ -25,7 +27,10 @@ export default function () {
       <Route path="/signup" render={(props) => <SignUp {...props} />} />
       <Route path="/repl" render={(props) => <Repl {...props} />} />
       <Route path="/person" render={(props) => <Person {...props} />} />
+      <Route path="/csrfLogin" exact render={(props) => <CsrfLogin {...props} />} />
+      <Route path="/csrfLoginOnSubmit" exact render={(props) => <CsrfLoginOnSubmit {...props} />} />
       <Route path="/" exact render={(props) => <CounterApp {...props} />} />
     </Switch>
   );
 }
+
